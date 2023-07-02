@@ -1,0 +1,6 @@
+pages/Page.class
+pages/HomePage.class
+common/TestBasic.class
+pages/familyProfile/AddNewRelativesPopup.class
+pages/familyProfile/FamilyProfilePage.class
+pages/LoginPage.class

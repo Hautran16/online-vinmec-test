@@ -1,0 +1,1 @@
+{"uuid":"0369d538-26b6-470b-96e2-2e286abdf199","name":"tests.TestCase.openWeb","children":["69c55f4a-379b-4f89-9ddb-7ccc125c7afa"],"description":"","befores":[{"name":"openWeb","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1687791897133,"stop":1687791910370}],"afters":[],"start":1687791897133,"stop":1687791910371}

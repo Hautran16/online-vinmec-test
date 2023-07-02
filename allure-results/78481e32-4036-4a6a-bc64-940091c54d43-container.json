@@ -1,0 +1,1 @@
+{"uuid":"78481e32-4036-4a6a-bc64-940091c54d43","name":"Run on Chrome","children":["cda1dca9-170a-4ce5-a6bc-26f353c242be"],"befores":[{"name":"openWeb","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1687966520154,"stop":1687966530687}],"afters":[],"start":1687966520112,"stop":1687966548205}

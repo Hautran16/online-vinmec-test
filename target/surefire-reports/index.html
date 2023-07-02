@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
+      <br/>
+      <span class="top-banner-font-1">1 suite</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" title="Collapse/expand all the suites" class="collapse-all-link">
+          <img src="collapseall.gif" class="collapse-all-icon">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" panel-name="suite-SystemTest" class="navigator-link">
+              <span class="suite-name border-passed">SystemTest</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" panel-name="test-xml-SystemTest" class="navigator-link ">
+                    <span>addNewRelativesTest.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="testlist-SystemTest" class="navigator-link ">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="group-SystemTest" class="navigator-link ">
+                    <span>1 group</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="times-SystemTest" class="navigator-link ">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="reporter-SystemTest" class="navigator-link ">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="ignored-methods-SystemTest" class="navigator-link ">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="chronological-SystemTest" class="navigator-link ">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">2 methods,   2 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-SystemTest" class="hide-methods passed suite-SystemTest"> (hide)</a> <!-- hide-methods passed suite-SystemTest -->
+                      <a href="#" panel-name="suite-SystemTest" class="show-methods passed suite-SystemTest"> (show)</a> <!-- show-methods passed suite-SystemTest -->
+                    </span>
+                    <div class="method-list-content passed suite-SystemTest">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-SystemTest" title="tests.familyProfile.AddNewRelativesTest" class="method navigator-link" hash-for-method="verifyAddNewRelativesSuccessfully(Hoàng Hà Hồng, 20/12/1993, Nữ, 0963214589, Vợ)">verifyAddNewRelativesSuccessfully(Hoàng Hà Hồng, 20/12/1993, Nữ, 0963214589, Vợ)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-SystemTest" title="tests.familyProfile.AddNewRelativesTest" class="method navigator-link" hash-for-method="verifyAddNewRelativesSuccessfully(Hoàng Hà Nhi, 20/12/1993, Nam, 0956231458, Chồng)">verifyAddNewRelativesSuccessfully(Hoàng Hà Nhi, 20/12/1993, Nam, 0956231458, Chồng)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-SystemTest -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-SystemTest" class="panel SystemTest">
+          <div class="suite-SystemTest-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">tests.familyProfile.AddNewRelativesTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyAddNewRelativesSuccessfully(Hoàng Hà Hồng, 20/12/1993, Nữ, 0963214589, Vợ)">
+                  </a> <!-- verifyAddNewRelativesSuccessfully(Hoàng Hà Hồng, 20/12/1993, Nữ, 0963214589, Vợ) -->
+                  <span class="method-name">verifyAddNewRelativesSuccessfully</span>
+                  <span class="parameters">(Hoàng Hà Hồng,20/12/1993,Nữ,0963214589,Vợ)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyAddNewRelativesSuccessfully(Hoàng Hà Nhi, 20/12/1993, Nam, 0956231458, Chồng)">
+                  </a> <!-- verifyAddNewRelativesSuccessfully(Hoàng Hà Nhi, 20/12/1993, Nam, 0956231458, Chồng) -->
+                  <span class="method-name">verifyAddNewRelativesSuccessfully</span>
+                  <span class="parameters">(Hoàng Hà Nhi,20/12/1993,Nam,0956231458,Chồng)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-SystemTest-class-passed -->
+        </div> <!-- panel SystemTest -->
+        <div panel-name="test-xml-SystemTest" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">/Users/tuongnguyen/Dev/automation-test/projects/online-vinmec-test/src/test/resources/testNG/addNewRelativesTest.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;SystemTest&quot; guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;Run on Chrome&quot; verbose=&quot;0&quot;&gt;
+    &lt;parameter name=&quot;browser&quot; value=&quot;chrome&quot;/&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;tests.familyProfile.AddNewRelativesTest&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;verifyAddNewRelativesSuccessfully&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- tests.familyProfile.AddNewRelativesTest --&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- Run on Chrome --&gt;
+&lt;/suite&gt; &lt;!-- SystemTest --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-SystemTest" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for SystemTest</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">Run on Chrome (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-SystemTest" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for SystemTest</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="test-group">
+              <span class="test-group-name">Success</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">verifyAddNewRelativesSuccessfully</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-SystemTest" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for SystemTest</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_SystemTest');
+function tableData_SystemTest() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(2);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'verifyAddNewRelativesSuccessfully')
+data.setCell(0, 2, 'tests.familyProfile.AddNewRelativesTest')
+data.setCell(0, 3, 14789);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'verifyAddNewRelativesSuccessfully')
+data.setCell(1, 2, 'tests.familyProfile.AddNewRelativesTest')
+data.setCell(1, 3, 11149);
+window.suiteTableData['SystemTest']= { tableData: data, tableDiv: 'times-div-SystemTest'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 25 seconds</span>
+              <div id="times-div-SystemTest">
+              </div> <!-- times-div-SystemTest -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-SystemTest" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for SystemTest</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-SystemTest" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">1 ignored method</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">tests.familyProfile.AddNewRelativesTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">verifyAddNewRelativesFailWhenNameInvalid</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-SystemTest" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">tests.familyProfile.AddNewRelativesTest</div> <!-- chronological-class-name -->
+              <div class="configuration-test before">
+                <span class="method-name">openWeb(chrome)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-class before">
+                <span class="method-name">loginSuccessfully</span>
+                <span class="method-start">5750 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-class before">
+                <span class="method-name">navigateToFamilyProfilePage</span>
+                <span class="method-start">24083 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="test-method">
+                <span class="method-name">verifyAddNewRelativesSuccessfully(Hoàng Hà Nhi, 20/12/1993, Nam, 0956231458, Chồng)</span>
+                <span class="method-start">33544 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">deleteRelativesSuccessfully</span>
+                <span class="method-start">44695 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">verifyAddNewRelativesSuccessfully(Hoàng Hà Hồng, 20/12/1993, Nữ, 0963214589, Vợ)</span>
+                <span class="method-start">46169 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">deleteRelativesSuccessfully</span>
+                <span class="method-start">60959 ms</span>
+              </div> <!-- configuration-method after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
+</html>

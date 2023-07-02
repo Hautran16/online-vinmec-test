@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-07-02T23:43:05 ICT" name="SystemTest" finished-at="2023-07-02T23:44:07 ICT" duration-ms="62402">
+    <groups>
+      <group name="Success">
+        <method signature="AddNewRelativesTest.verifyAddNewRelativesSuccessfully(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:tests.familyProfile.AddNewRelativesTest@3967e60c]" name="verifyAddNewRelativesSuccessfully" class="tests.familyProfile.AddNewRelativesTest"/>
+      </group> <!-- Success -->
+    </groups>
+    <test started-at="2023-07-02T23:43:05 ICT" name="Run on Chrome" finished-at="2023-07-02T23:44:07 ICT" duration-ms="62402">
+      <class name="tests.familyProfile.AddNewRelativesTest">
+        <test-method is-config="true" signature="openWeb(java.lang.String)[pri:0, instance:tests.familyProfile.AddNewRelativesTest@3967e60c]" started-at="2023-07-02T23:43:05 ICT" name="openWeb" finished-at="2023-07-02T23:43:11 ICT" duration-ms="5734" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openWeb -->
+        <test-method is-config="true" signature="loginSuccessfully()[pri:0, instance:tests.familyProfile.AddNewRelativesTest@3967e60c]" started-at="2023-07-02T23:43:11 ICT" name="loginSuccessfully" finished-at="2023-07-02T23:43:29 ICT" duration-ms="18333" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginSuccessfully -->
+        <test-method is-config="true" signature="navigateToFamilyProfilePage()[pri:0, instance:tests.familyProfile.AddNewRelativesTest@3967e60c]" started-at="2023-07-02T23:43:29 ICT" name="navigateToFamilyProfilePage" finished-at="2023-07-02T23:43:38 ICT" duration-ms="8822" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigateToFamilyProfilePage -->
+        <test-method signature="verifyAddNewRelativesSuccessfully(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:tests.familyProfile.AddNewRelativesTest@3967e60c]" started-at="2023-07-02T23:43:38 ICT" name="verifyAddNewRelativesSuccessfully" data-provider="addNewRelativesSuccessfully" finished-at="2023-07-02T23:43:50 ICT" duration-ms="11149" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Hoàng Hà Nhi]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[20/12/1993]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Nam]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[0956231458]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Chồng]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyAddNewRelativesSuccessfully -->
+        <test-method is-config="true" signature="deleteRelativesSuccessfully()[pri:0, instance:tests.familyProfile.AddNewRelativesTest@3967e60c]" started-at="2023-07-02T23:43:50 ICT" name="deleteRelativesSuccessfully" finished-at="2023-07-02T23:43:51 ICT" duration-ms="1472" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteRelativesSuccessfully -->
+        <test-method signature="verifyAddNewRelativesSuccessfully(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:tests.familyProfile.AddNewRelativesTest@3967e60c]" started-at="2023-07-02T23:43:51 ICT" name="verifyAddNewRelativesSuccessfully" data-provider="addNewRelativesSuccessfully" finished-at="2023-07-02T23:44:06 ICT" duration-ms="14789" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Hoàng Hà Hồng]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[20/12/1993]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Nữ]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[0963214589]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Vợ]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyAddNewRelativesSuccessfully -->
+        <test-method is-config="true" signature="deleteRelativesSuccessfully()[pri:0, instance:tests.familyProfile.AddNewRelativesTest@3967e60c]" started-at="2023-07-02T23:44:06 ICT" name="deleteRelativesSuccessfully" finished-at="2023-07-02T23:44:07 ICT" duration-ms="1434" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteRelativesSuccessfully -->
+      </class> <!-- tests.familyProfile.AddNewRelativesTest -->
+    </test> <!-- Run on Chrome -->
+  </suite> <!-- SystemTest -->
+</testng-results>

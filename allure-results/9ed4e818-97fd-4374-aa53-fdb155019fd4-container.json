@@ -1,0 +1,1 @@
+{"uuid":"9ed4e818-97fd-4374-aa53-fdb155019fd4","name":"tests.FamilyProfileTest","children":["bb29817b-f2e8-4bee-ae07-5cc92b8d3796"],"befores":[{"name":"loginSuccessfully","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1687941005848,"stop":1687941011338}],"afters":[],"start":1687940998089,"stop":1687941018068}
