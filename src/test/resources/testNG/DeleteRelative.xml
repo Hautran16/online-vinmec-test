@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SystemTest">
+    <test name="Run on Chrome">
+        <parameter name="browser" value="chrome"></parameter>
+        <classes>
+            <class name="tests.familyProfile.AddNewRelativesTest">
+                <methods>
+                    <include name="verifyAddNewRelativesSuccessfully"></include>
+                    <exclude name="org.testng.annotations.AfterMethod"/>
+                </methods>
+            </class>
+            <class name="tests.familyProfile.DeleteRelativeTest">
+                <methods>
+                    <include name="verifyAddNewRelativesFailWhenPhoneInvalid"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

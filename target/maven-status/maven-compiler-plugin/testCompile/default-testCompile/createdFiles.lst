@@ -1,5 +1,4 @@
-Env.class
-tests/familyProfile/AddNewRelativesTest.class
-tests/TestCase.class
-tests/familyProfile/FamilyProfileTest.class
-tests/LoginTest.class
+tests\familyProfile\FamilyProfileTest.class
+tests\LoginTest.class
+tests\familyProfile\AddNewRelativesTest.class
+tests\TestCase.class

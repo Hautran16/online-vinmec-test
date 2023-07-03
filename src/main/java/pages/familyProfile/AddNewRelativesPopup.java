@@ -26,6 +26,7 @@ public class AddNewRelativesPopup extends Page {
     By datepickerPrev = By.xpath("//div[@class = 'datepicker-months']//th[@class = 'prev']");
     By ddGender = By.xpath("//*[contains(@id, 'edit-gender')]");
     By txtPhoneNumber = By.xpath("//*[contains(@id, 'edit-phone')]");
+    By errRequirePhone = By.xpath("//*[contains(@id, 'edit-phone')]// following :: div[1]");
     By ddRelationship = By.xpath("//*[contains(@id, 'edit-relationship')]");
     By btnSubmit = By.xpath("//div[@class = 'modal-footer']");
     By btnClose = By.xpath("//*[@id = 'modal-profile-family-label']// following :: button[@class = 'close']");
@@ -123,6 +124,16 @@ public class AddNewRelativesPopup extends Page {
         }
         String textErrRequireName = driverWeb.findElement(errRequireName).getText();
         return textErrRequireName;
+    }
+
+    public String getErrRequirePhone() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        String textErrRequirePhone = driverWeb.findElement(errRequirePhone).getText();
+        return textErrRequirePhone;
     }
 
     public void clickClose(){

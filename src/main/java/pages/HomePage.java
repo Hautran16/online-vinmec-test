@@ -18,8 +18,6 @@ public class HomePage extends Page {
 	}
 
 	public void clickBtnClose()  {
-		System.out.println("HAHUĐúhúahdúahduhh");
-		System.out.println(waitElementForVisible(btnClose));
 		if(driverWeb.findElement(btnClose).isDisplayed() == true){
 			driverWeb.findElement(btnClose).click();
 		}

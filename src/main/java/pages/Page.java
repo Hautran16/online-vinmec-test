@@ -71,7 +71,7 @@ public class Page {
 	}
 
 	public void waitLoadingHidden(){
-		WebDriverWait wait = new WebDriverWait(driverWeb, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driverWeb, Duration.ofSeconds(getTimeOutFromFileConfig()));
 		wait.until(ExpectedConditions.and(
 				ExpectedConditions.presenceOfElementLocated(By.id("load")),
 				ExpectedConditions.attributeToBe(By.id("load"), "style", "")

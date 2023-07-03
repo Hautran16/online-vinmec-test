@@ -9,7 +9,7 @@ import tests.TestCase;
 import java.io.IOException;
 
 public class AddNewRelativesTest extends TestCase {
-    String excelFilePath = "src/test/resources/testData/testCases/addNewRelatives.xlsx";
+    String excelFilePath = "src/test/resources/testData/testCases/AddNewRelatives.xlsx";
 
     @BeforeClass
     public void navigateToFamilyProfilePage() {
@@ -55,27 +55,23 @@ public class AddNewRelativesTest extends TestCase {
         addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequireName(), errMessage);
     }
 
-//    @DataProvider(name = "getTestDataWithPhoneInvalid")
-//    public Object[][] getTestDataWithPhoneInvalid() throws IOException {
-//        return testBasic.getTestData(excelFilePath, "Failure_Phone");
-//    }
-//
-//    @Test(groups = "Failure", dataProvider = "getTestDataWithPhoneInvalid", priority = 1)
-//    public void verifyAddNewRelativesFailWhenPhoneInvalid(String name, String birthday, String gender, String phoneNumber, String relationship, String errMessage){
-//        addNewRelatives(name, birthday,gender, phoneNumber, relationship);
-//        AddNewRelativesPopup addNewRelativesPopup = new AddNewRelativesPopup(testBasic.driver);
-//        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequireName(), errMessage);
-//    }
+    @DataProvider(name = "getTestDataWithPhoneInvalid")
+    public Object[][] getTestDataWithPhoneInvalid() throws IOException {
+        return testBasic.getTestData(excelFilePath, "Failure_Phone");
+    }
+
+    @Test(groups = "Failure", dataProvider = "getTestDataWithPhoneInvalid", priority = 1)
+    public void verifyAddNewRelativesFailWhenPhoneInvalid(String name, String birthday, String gender, String phoneNumber, String relationship, String errMessage){
+        addNewRelatives(name, birthday,gender, phoneNumber, relationship);
+        AddNewRelativesPopup addNewRelativesPopup = new AddNewRelativesPopup(testBasic.driver);
+        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequirePhone(), errMessage);
+    }
 
     @AfterMethod(onlyForGroups = "Success")
     public void deleteRelativesSuccessfully(){
         FamilyProfilePage familyProfilePage = new FamilyProfilePage(testBasic.driver);
         familyProfilePage.deleteRelatives();
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
+        familyProfilePage.waitLoadingHidden();
     }
 
     @AfterMethod(onlyForGroups = "Failure")

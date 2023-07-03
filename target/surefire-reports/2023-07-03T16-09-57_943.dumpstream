@@ -1,0 +1,4 @@
+# Created at 2023-07-03T16:09:58.450
+Boot Manifest-JAR contains absolute paths in classpath 'D:\AutomationTest\02Project\02Git\online-vinmec-test\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+

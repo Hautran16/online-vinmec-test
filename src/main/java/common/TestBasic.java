@@ -18,7 +18,6 @@ import java.util.Properties;
 public class TestBasic {
     public WebDriver driver;
     String FILE_CONFIG = "/src/main/resources/config/ProjectConfiguration.properties";
-
     String DEFAULT_FILE_TEST_CONFIG = "src/test/resources/testData/testConfig/TestConfigLive.properties";
     String FILE_TEST_CONFIG;
 

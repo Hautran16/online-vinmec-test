@@ -9,21 +9,20 @@ import java.io.IOException;
 
 public class LoginTest extends TestCase {
 
-    @DataProvider(name = "testData")
-    public Object[][] getTestData() throws IOException {
-        String excelFilePath = "src/main/resources/testData/testData.xlsx";
-        return testBasic.getTestData(excelFilePath, "Sheet1");
-    }
-
     @BeforeClass
     public void beforeClass() {
         HomePage homePage = new HomePage(testBasic.driver);
         homePage.clickLoginItem();
     }
 
-    @Test(dataProvider = "testData")
+    @DataProvider(name = "LoginTest")
+    public Object[][] getTestData() throws IOException {
+        String excelFilePath = "src/main/resources/testData/Login.xlsx";
+        return testBasic.getTestData(excelFilePath, "Sheet1");
+    }
+
+    @Test(dataProvider = "LoginTest")
     public void verifyLoginFail(String email, String password) throws Exception {
-        System.out.println("Testing");
         LoginPage loginPage = new LoginPage(testBasic.driver);
         loginPage.inputEmail(email);
         loginPage.inputPassword(password);
