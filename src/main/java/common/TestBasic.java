@@ -139,8 +139,12 @@ public class TestBasic {
         for (int i = 0; i < rowCount; i++) {
             Row row = sheet.getRow(i + 1);
             for (int j = 0; j < columnCount; j++) {
-                Cell cell = row.getCell(j);
-                testData[i][j] = cell.toString();
+                if(row.getCell(j) == null){
+                    testData[i][j] = "";
+                } else {
+                    Cell cell = row.getCell(j);
+                    testData[i][j] = cell.toString();
+                }
             }
         }
         workbook.close();
@@ -173,4 +177,12 @@ public class TestBasic {
 
         return months;
     }
+
+    public String convertNullToStringEmpty(String data){
+        if(data.equals(null)){
+            data = "";
+        }
+        return data;
+    }
+
 }

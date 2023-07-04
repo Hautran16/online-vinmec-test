@@ -11,8 +11,6 @@ public class FamilyProfilePage extends Page {
     }
 
     By btnAddNewRelatives = By.xpath("//div[@class = 'col-sm-7']//div[5]");
-    By btnDeleteRelatives = By.xpath("//div[@class = 'field field-link-combine']//div[@class = 'row']//div[2]");
-    By btnSubmitDeleleRelatives = By.xpath("//div[@class = 'form-actions']//input[contains(@id, 'edit-submit')]");
     By textName = By.xpath("//div[@class = 'col-sm-8']//div[@class = 'field field-name'] //span[1]");
     By textAge = By.xpath("");
     By textPhoneNum = By.xpath("//div[@class = 'col-sm-8']//div[@class = 'field field-phone-number'] //span[2]");
@@ -23,13 +21,6 @@ public class FamilyProfilePage extends Page {
         waitElementForVisible(btnAddNewRelatives);
         driverWeb.findElement(btnAddNewRelatives).click();
         return new AddNewRelativesPopup(driverWeb);
-    }
-
-    public void deleteRelatives(){
-        waitElementForVisible(btnDeleteRelatives);
-        driverWeb.findElement(btnDeleteRelatives).click();
-        waitElementForVisible(btnSubmitDeleleRelatives);
-        driverWeb.findElement(btnSubmitDeleleRelatives).click();
     }
 
     public String getName(){

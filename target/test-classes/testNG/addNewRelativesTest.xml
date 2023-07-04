@@ -6,7 +6,7 @@
         <classes>
             <class name="tests.familyProfile.AddNewRelativesTest">
                 <methods>
-                    <include name="verifyAddNewRelativesFailWhenPhoneInvalid"></include>
+                    <include name="verifyAddNewRelativesFailWhenNameInvalid"></include>
                 </methods>
             </class>
         </classes>

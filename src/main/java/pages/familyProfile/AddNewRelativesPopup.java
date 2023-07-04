@@ -68,6 +68,7 @@ public class AddNewRelativesPopup extends Page {
         By lableDay = By.xpath("//table[@class = 'table-condensed']//td[text() = '" + day +"' and @class = 'day']");
         driverWeb.findElement(lableDay).click();
     }
+
     public void inputGender(String gender){
         waitElementForVisible(ddGender);
         driverWeb.findElement(ddGender).click();
@@ -114,6 +115,15 @@ public class AddNewRelativesPopup extends Page {
         waitElementForVisible(btnSubmit);
         driverWeb.findElement(btnSubmit).click();
         return new FamilyProfilePage(driverWeb);
+    }
+
+    public void addNewRelatives(String name, String birthday, String gender, String phoneNumber, String relationship) {
+        inputName(name);
+        inputBirthday(birthday);
+        inputGender(gender);
+        inputPhoneNumber(phoneNumber);
+        inputRelationship(relationship);
+        clickSubmit();
     }
 
     public String getErrRequireName() {

@@ -12,13 +12,13 @@ public class TestCase {
 	public TestBasic testBasic = new TestBasic();
 
 	@Parameters({"browser"})
-	@BeforeTest
+	@BeforeClass
 	public void openWeb(String browser) {
 		testBasic.openWebsite(browser);
 		testBasic.maximizeBrowser();
 	}
 
-	@BeforeClass
+	@BeforeClass(dependsOnMethods = "openWeb")
 	public HomePage loginSuccessfully(){
 		LoginPage loginPage = new LoginPage(testBasic.driver);
 		String email = testBasic.getEmailFormTestConfigByEnv();

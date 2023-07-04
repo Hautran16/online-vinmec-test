@@ -3,10 +3,12 @@ package tests.familyProfile;
 import org.testng.annotations.*;
 import pages.HomePage;
 import pages.familyProfile.AddNewRelativesPopup;
+import pages.familyProfile.DeleteRelativePopup;
 import pages.familyProfile.FamilyProfilePage;
 import tests.TestCase;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 public class AddNewRelativesTest extends TestCase {
     String excelFilePath = "src/test/resources/testData/testCases/AddNewRelatives.xlsx";
@@ -21,20 +23,26 @@ public class AddNewRelativesTest extends TestCase {
         FamilyProfilePage familyProfilePage = new FamilyProfilePage(testBasic.driver);
         AddNewRelativesPopup addNewRelativesPopup = familyProfilePage.clickAddNewRelatives();
         addNewRelativesPopup.showPopupProfileFamily();
-        addNewRelativesPopup.inputName(name);
-        addNewRelativesPopup.inputBirthday(birthday);
-        addNewRelativesPopup.inputGender(gender);
-        addNewRelativesPopup.inputPhoneNumber(phoneNumber);
-        addNewRelativesPopup.inputRelationship(relationship);
-        addNewRelativesPopup.clickSubmit();
+        addNewRelativesPopup.addNewRelatives(name, birthday, gender, phoneNumber, relationship);
     }
 
-    @DataProvider(name = "addNewRelativesSuccessfully")
-    public Object[][] getTestData() throws IOException {
-        return testBasic.getTestData(excelFilePath, "Success");
+    @DataProvider(name = "addNewRelativesTest")
+    public Object[][] getTestData(Method method) throws IOException {
+        Object[][] data = null;
+        switch (method.getName()){
+            case ("verifyAddNewRelativesSuccessfully"): data = testBasic.getTestData(excelFilePath, "Success");
+                break;
+            case ("verifyAddNewRelativesFailWhenNameInvalid"): data = testBasic.getTestData(excelFilePath, "Failure_Name");
+                break;
+            case ("verifyAddNewRelativesFailWhenPhoneInvalid"): data = testBasic.getTestData(excelFilePath, "Failure_Phone");
+                break;
+            case ("verifyAddNewRelativesFailWhenGenderInvalid"): data = testBasic.getTestData(excelFilePath, "Failure_Gender");
+                break;
+        }
+        return data ;
     }
 
-    @Test(groups = "Success", dataProvider = "addNewRelativesSuccessfully")
+    @Test(groups = "Success", dataProvider = "addNewRelativesTest")
     public void verifyAddNewRelativesSuccessfully(String name, String birthday, String gender, String phoneNumber, String relationship){
         addNewRelatives(name, birthday,gender, phoneNumber, relationship);
         FamilyProfilePage familyProfilePage = new FamilyProfilePage(testBasic.driver);
@@ -43,34 +51,32 @@ public class AddNewRelativesTest extends TestCase {
         familyProfilePage.verifyTextPresent(familyProfilePage.getRelationship(), relationship);
     }
 
-    @DataProvider(name = "getTestDataWithNameInvalid")
-    public Object[][] getTestDataWithNameInvalid() throws IOException {
-        return testBasic.getTestData(excelFilePath, "Failure_Name");
-    }
-
-    @Test(groups = "Failure", dataProvider = "getTestDataWithNameInvalid", priority = 1)
+    @Test(groups = "Failure", dataProvider = "addNewRelativesTest", priority = 1)
     public void verifyAddNewRelativesFailWhenNameInvalid(String name, String birthday, String gender, String phoneNumber, String relationship, String errMessage){
         addNewRelatives(name, birthday,gender, phoneNumber, relationship);
         AddNewRelativesPopup addNewRelativesPopup = new AddNewRelativesPopup(testBasic.driver);
         addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequireName(), errMessage);
     }
 
-    @DataProvider(name = "getTestDataWithPhoneInvalid")
-    public Object[][] getTestDataWithPhoneInvalid() throws IOException {
-        return testBasic.getTestData(excelFilePath, "Failure_Phone");
-    }
-
-    @Test(groups = "Failure", dataProvider = "getTestDataWithPhoneInvalid", priority = 1)
+    @Test(groups = "Failure", dataProvider = "addNewRelativesTest", priority = 1)
     public void verifyAddNewRelativesFailWhenPhoneInvalid(String name, String birthday, String gender, String phoneNumber, String relationship, String errMessage){
         addNewRelatives(name, birthday,gender, phoneNumber, relationship);
         AddNewRelativesPopup addNewRelativesPopup = new AddNewRelativesPopup(testBasic.driver);
         addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequirePhone(), errMessage);
     }
 
-    @AfterMethod(onlyForGroups = "Success")
+    @Test(groups = "Failure", dataProvider = "addNewRelativesTest", priority = 1)
+    public void verifyAddNewRelativesFailWhenGenderInvalid(String name, String birthday, String gender, String phoneNumber, String relationship, String errMessage){
+        addNewRelatives(name, birthday,gender, phoneNumber, relationship);
+        AddNewRelativesPopup addNewRelativesPopup = new AddNewRelativesPopup(testBasic.driver);
+        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequirePhone(), errMessage);
+    }
+
+    @AfterMethod(onlyForGroups = "Success", groups = "DeleteData")
     public void deleteRelativesSuccessfully(){
         FamilyProfilePage familyProfilePage = new FamilyProfilePage(testBasic.driver);
-        familyProfilePage.deleteRelatives();
+        DeleteRelativePopup deleteRelativePopup = new DeleteRelativePopup(testBasic.driver);
+        deleteRelativePopup.deleteRelativesSuccessfully();
         familyProfilePage.waitLoadingHidden();
     }
 
