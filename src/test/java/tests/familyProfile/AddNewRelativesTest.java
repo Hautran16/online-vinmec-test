@@ -11,13 +11,13 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class AddNewRelativesTest extends TestCase {
-    String excelFilePath = "src/test/resources/testData/testCases/AddNewRelatives.xlsx";
+    public String excelFilePath = "src/test/resources/testData/testCases/AddNewRelatives.xlsx";
 
     @BeforeClass
     public void navigateToFamilyProfilePage() {
         HomePage homePage = new HomePage(testBasic.driver);
         homePage.clickIconProfile();
-        FamilyProfilePage familyProfilePage = homePage.clickFamilyProfile();
+        homePage.clickFamilyProfile();
     }
     public void addNewRelatives(String name, String birthday, String gender, String phoneNumber, String relationship) {
         FamilyProfilePage familyProfilePage = new FamilyProfilePage(testBasic.driver);

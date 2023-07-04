@@ -31,9 +31,15 @@ public class AddNewRelativesPopup extends Page {
     By btnSubmit = By.xpath("//div[@class = 'modal-footer']");
     By btnClose = By.xpath("//*[@id = 'modal-profile-family-label']// following :: button[@class = 'close']");
     By popupProfileFamily = By.xpath("//div[@class = 'modal fade modal-profile-family-form show']");
+    By popupProfileFamilyHide = By.xpath("//div[@class = 'modal fade modal-profile-family-form']");
+
 
     public void showPopupProfileFamily(){
         waitElementForVisible(popupProfileFamily);
+    }
+
+    public void hidePopupProfileFamily(){
+        waitElementForVisible(popupProfileFamilyHide);
     }
 
     public void inputName(String name){
