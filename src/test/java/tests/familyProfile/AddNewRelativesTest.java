@@ -1,5 +1,6 @@
 package tests.familyProfile;
 
+import model.RelativeModel;
 import org.testng.annotations.*;
 import pages.HomePage;
 import pages.familyProfile.AddNewRelativesPopup;
@@ -19,57 +20,59 @@ public class AddNewRelativesTest extends TestCase {
         homePage.clickIconProfile();
         homePage.clickFamilyProfile();
     }
-    public void addNewRelatives(String name, String birthday, String gender, String phoneNumber, String relationship) {
+
+    public void addNewRelatives() {
         FamilyProfilePage familyProfilePage = new FamilyProfilePage(testBasic.driver);
         AddNewRelativesPopup addNewRelativesPopup = familyProfilePage.clickAddNewRelatives();
         addNewRelativesPopup.showPopupProfileFamily();
-        addNewRelativesPopup.addNewRelatives(name, birthday, gender, phoneNumber, relationship);
+        addNewRelativesPopup.addNewRelatives();
     }
 
     @DataProvider(name = "addNewRelativesTest")
     public Object[][] getTestData(Method method) throws IOException {
-        Object[][] data = null;
+        Object[][] relativeModelList = null;
         switch (method.getName()){
-            case ("verifyAddNewRelativesSuccessfully"): data = testBasic.getTestData(excelFilePath, "Success");
+            case ("verifyAddNewRelativesSuccessfully"): relativeModelList = testBasic.getDataFromExcelObject(excelFilePath, "Success", RelativeModel.class);
                 break;
-            case ("verifyAddNewRelativesFailWhenNameInvalid"): data = testBasic.getTestData(excelFilePath, "Failure_Name");
+            case ("verifyAddNewRelativesFailWhenNameInvalid"): relativeModelList = testBasic.getDataFromExcelObject(excelFilePath, "Failure_Name", RelativeModel.class);
                 break;
-            case ("verifyAddNewRelativesFailWhenPhoneInvalid"): data = testBasic.getTestData(excelFilePath, "Failure_Phone");
+            case ("verifyAddNewRelativesFailWhenPhoneInvalid"): relativeModelList = testBasic.getDataFromExcelObject(excelFilePath, "Failure_Phone", RelativeModel.class);
                 break;
-            case ("verifyAddNewRelativesFailWhenGenderInvalid"): data = testBasic.getTestData(excelFilePath, "Failure_Gender");
+            case ("verifyAddNewRelativesFailWhenGenderInvalid"): relativeModelList = testBasic.getDataFromExcelObject(excelFilePath, "Failure_Gender", RelativeModel.class);
                 break;
         }
-        return data ;
+
+        return relativeModelList;
     }
 
-    @Test(groups = "Success", dataProvider = "addNewRelativesTest")
-    public void verifyAddNewRelativesSuccessfully(String name, String birthday, String gender, String phoneNumber, String relationship){
-        addNewRelatives(name, birthday,gender, phoneNumber, relationship);
+   @Test(groups = "Success", dataProvider = "addNewRelativesTest")
+    public void verifyAddNewRelativesSuccessfully(RelativeModel relativeModel){
+        addNewRelatives();
         FamilyProfilePage familyProfilePage = new FamilyProfilePage(testBasic.driver);
-        familyProfilePage.verifyTextPresent(familyProfilePage.getName(), name);
-        familyProfilePage.verifyTextPresent(familyProfilePage.getPhoneNum(), phoneNumber);
-        familyProfilePage.verifyTextPresent(familyProfilePage.getRelationship(), relationship);
+        familyProfilePage.verifyTextPresent(familyProfilePage.getName(), RelativeModel.modelName);
+        familyProfilePage.verifyTextPresent(familyProfilePage.getPhoneNum(), RelativeModel.modelPhoneNumber);
+        familyProfilePage.verifyTextPresent(familyProfilePage.getRelationship(), RelativeModel.modelRelationship);
     }
 
     @Test(groups = "Failure", dataProvider = "addNewRelativesTest", priority = 1)
-    public void verifyAddNewRelativesFailWhenNameInvalid(String name, String birthday, String gender, String phoneNumber, String relationship, String errMessage){
-        addNewRelatives(name, birthday,gender, phoneNumber, relationship);
+    public void verifyAddNewRelativesFailWhenNameInvalid(RelativeModel relativeModel){
+        addNewRelatives();
         AddNewRelativesPopup addNewRelativesPopup = new AddNewRelativesPopup(testBasic.driver);
-        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequireName(), errMessage);
+        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequireName(), RelativeModel.modelErrMessage);
     }
 
     @Test(groups = "Failure", dataProvider = "addNewRelativesTest", priority = 1)
-    public void verifyAddNewRelativesFailWhenPhoneInvalid(String name, String birthday, String gender, String phoneNumber, String relationship, String errMessage){
-        addNewRelatives(name, birthday,gender, phoneNumber, relationship);
+    public void verifyAddNewRelativesFailWhenPhoneInvalid(RelativeModel relativeModel){
+        addNewRelatives();
         AddNewRelativesPopup addNewRelativesPopup = new AddNewRelativesPopup(testBasic.driver);
-        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequirePhone(), errMessage);
+        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequirePhone(), RelativeModel.modelErrMessage);
     }
 
     @Test(groups = "Failure", dataProvider = "addNewRelativesTest", priority = 1)
-    public void verifyAddNewRelativesFailWhenGenderInvalid(String name, String birthday, String gender, String phoneNumber, String relationship, String errMessage){
-        addNewRelatives(name, birthday,gender, phoneNumber, relationship);
+    public void verifyAddNewRelativesFailWhenGenderInvalid(RelativeModel relativeModel){
+        addNewRelatives();
         AddNewRelativesPopup addNewRelativesPopup = new AddNewRelativesPopup(testBasic.driver);
-        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequirePhone(), errMessage);
+        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequirePhone(), RelativeModel.modelErrMessage);
     }
 
     @AfterMethod(onlyForGroups = "Success", groups = "DeleteData")

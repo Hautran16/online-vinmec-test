@@ -1,6 +1,8 @@
 package common;
 
+import model.RelativeModel;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.*;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,10 +12,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Properties;
+import java.lang.reflect.Field;
+import java.util.*;
 
 public class TestBasic {
     public WebDriver driver;
@@ -178,11 +178,96 @@ public class TestBasic {
         return months;
     }
 
-    public String convertNullToStringEmpty(String data){
-        if(data.equals(null)){
-            data = "";
+    public Object[][] getDataFromExcelObject(String excelFilePath, String sheetName, Class targetClass) throws IOException{
+        List<RelativeModel> dataList = mapExcelToObject(excelFilePath, sheetName, targetClass);
+        Object[][] data = new Object[dataList.size()][1];
+
+        for (int i = 0; i < dataList.size(); i++) {
+            data[i][0] = dataList.get(i);
         }
+
         return data;
+    }
+
+    public <T> List<T> mapExcelToObject(String filePath, String sheetName, Class<T> targetClass) throws IOException {
+        List<T> objects = new ArrayList<>();
+
+        FileInputStream fileInputStream = new FileInputStream(filePath);
+        Workbook workbook = new XSSFWorkbook(fileInputStream);
+        Sheet sheet = workbook.getSheet(sheetName);
+
+        Iterator<Row> rowIterator = sheet.iterator();
+        if (rowIterator.hasNext()) {
+            Row headerRow = rowIterator.next();
+            List<String> columnNames = getColumnNames(headerRow);
+
+            while (rowIterator.hasNext()) {
+                Row dataRow = rowIterator.next();
+                T object = createInstance(targetClass);
+
+                for (int i = 0; i < columnNames.size(); i++) {
+                    Cell cell = dataRow.getCell(i);
+                    String columnName = columnNames.get(i);
+                    setFieldValue(object, columnName, cell);
+                }
+
+                objects.add(object);
+            }
+        }
+
+        workbook.close();
+        fileInputStream.close();
+
+        return objects;
+    }
+
+    private static List<String> getColumnNames(Row headerRow) {
+        List<String> columnNames = new ArrayList<>();
+        Iterator<Cell> cellIterator = headerRow.cellIterator();
+
+        while (cellIterator.hasNext()) {
+            Cell cell = cellIterator.next();
+            columnNames.add(cell.getStringCellValue());
+        }
+
+        return columnNames;
+    }
+
+    private static <T> T createInstance(Class<T> targetClass) {
+        try {
+            return targetClass.getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to create instance of target class.", e);
+        }
+    }
+
+    private static <T> void setFieldValue(T object, String fieldName, Cell cell) {
+        try {
+            Field field = object.getClass().getDeclaredField(fieldName);
+            field.setAccessible(true);
+
+            if (cell != null) {
+                if (field.getType() == String.class) {
+                    if (cell.getCellType() == CellType.STRING) {
+                        field.set(object, cell.getStringCellValue());
+                    } else if (cell.getCellType() == CellType.NUMERIC) {
+                        field.set(object, String.valueOf(cell.getNumericCellValue()));
+                    }
+                } else if (field.getType() == int.class || field.getType() == Integer.class) {
+                    if (cell.getCellType() == CellType.NUMERIC) {
+                        field.set(object, (int) cell.getNumericCellValue());
+                    }
+                }
+            } else {
+                if (field.getType() == String.class) {
+                    field.set(object, "");
+                } else if (field.getType() == int.class || field.getType() == Integer.class) {
+                    field.set(object, 0);
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to set field value.", e);
+        }
     }
 
 }

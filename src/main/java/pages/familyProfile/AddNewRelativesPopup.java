@@ -1,6 +1,7 @@
 package pages.familyProfile;
 
 import common.TestBasic;
+import model.RelativeModel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -42,12 +43,13 @@ public class AddNewRelativesPopup extends Page {
         waitElementForVisible(popupProfileFamilyHide);
     }
 
-    public void inputName(String name){
+    public void inputName(){
         waitElementForVisible(txtName);
-        driverWeb.findElement(txtName).sendKeys(name);
+        driverWeb.findElement(txtName).sendKeys(RelativeModel.modelName);
     }
 
-    public void inputBirthday(String birthday){
+    public void inputBirthday(){
+        String birthday = RelativeModel.modelBirthday;
         waitElementForVisible(dateBirthDay);
         driverWeb.findElement(dateBirthDay).click();
         Date dateBirthdayInput = null;
@@ -75,7 +77,8 @@ public class AddNewRelativesPopup extends Page {
         driverWeb.findElement(lableDay).click();
     }
 
-    public void inputGender(String gender){
+    public void inputGender(){
+        String gender = RelativeModel.modelGender;
         waitElementForVisible(ddGender);
         driverWeb.findElement(ddGender).click();
         String elementLocator = "//*[contains(@id, 'edit-gender')]//option[@value = '']";
@@ -91,12 +94,13 @@ public class AddNewRelativesPopup extends Page {
         driverWeb.findElement(txtGender).click();
     }
 
-    public void inputPhoneNumber(String phoneNumber){
+    public void inputPhoneNumber(){
         waitElementForVisible(txtPhoneNumber);
-        driverWeb.findElement(txtPhoneNumber).sendKeys(phoneNumber);
+        driverWeb.findElement(txtPhoneNumber).sendKeys(RelativeModel.modelPhoneNumber);
     }
 
-    public void inputRelationship(String relationship){
+    public void inputRelationship(){
+        String relationship = RelativeModel.modelRelationship;
         Map<String, String> map = new HashMap<String, String>();
         map.put("Bố", "Father");
         map.put("Mẹ", "Mother");
@@ -123,12 +127,12 @@ public class AddNewRelativesPopup extends Page {
         return new FamilyProfilePage(driverWeb);
     }
 
-    public void addNewRelatives(String name, String birthday, String gender, String phoneNumber, String relationship) {
-        inputName(name);
-        inputBirthday(birthday);
-        inputGender(gender);
-        inputPhoneNumber(phoneNumber);
-        inputRelationship(relationship);
+    public void addNewRelatives() {
+        inputName();
+        inputBirthday();
+        inputGender();
+        inputPhoneNumber();
+        inputRelationship();
         clickSubmit();
     }
 
