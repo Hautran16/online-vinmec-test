@@ -43,13 +43,13 @@ public class AddNewRelativesPopup extends Page {
         waitElementForVisible(popupProfileFamilyHide);
     }
 
-    public void inputName(){
+    public void inputName(RelativeModel relativeModel){
         waitElementForVisible(txtName);
-        driverWeb.findElement(txtName).sendKeys(RelativeModel.name);
+        driverWeb.findElement(txtName).sendKeys(relativeModel.getName());
     }
 
-    public void inputBirthday(){
-        String birthday = RelativeModel.birthday;
+    public void inputBirthday(RelativeModel relativeModel){
+        String birthday = relativeModel.getBirthday();
         waitElementForVisible(dateBirthDay);
         driverWeb.findElement(dateBirthDay).click();
         Date dateBirthdayInput = null;
@@ -77,8 +77,8 @@ public class AddNewRelativesPopup extends Page {
         driverWeb.findElement(lableDay).click();
     }
 
-    public void inputGender(){
-        String gender = RelativeModel.gender;
+    public void inputGender(RelativeModel relativeModel){
+        String gender = relativeModel.getGender();
         waitElementForVisible(ddGender);
         driverWeb.findElement(ddGender).click();
         String elementLocator = "//*[contains(@id, 'edit-gender')]//option[@value = '']";
@@ -94,13 +94,13 @@ public class AddNewRelativesPopup extends Page {
         driverWeb.findElement(txtGender).click();
     }
 
-    public void inputPhoneNumber(){
+    public void inputPhoneNumber(RelativeModel relativeModel){
         waitElementForVisible(txtPhoneNumber);
-        driverWeb.findElement(txtPhoneNumber).sendKeys(RelativeModel.phoneNumber);
+        driverWeb.findElement(txtPhoneNumber).sendKeys(relativeModel.getPhoneNumber());
     }
 
-    public void inputRelationship(){
-        String relationship = RelativeModel.relationship;
+    public void inputRelationship(RelativeModel relativeModel){
+        String relationship = relativeModel.getRelationship();
         Map<String, String> map = new HashMap<String, String>();
         map.put("Bố", "Father");
         map.put("Mẹ", "Mother");
@@ -127,12 +127,12 @@ public class AddNewRelativesPopup extends Page {
         return new FamilyProfilePage(driverWeb);
     }
 
-    public void addNewRelatives() {
-        inputName();
-        inputBirthday();
-        inputGender();
-        inputPhoneNumber();
-        inputRelationship();
+    public void addNewRelatives(RelativeModel relativeModel) {
+        inputName(relativeModel);
+        inputBirthday(relativeModel);
+        inputGender(relativeModel);
+        inputPhoneNumber(relativeModel);
+        inputRelationship(relativeModel);
         clickSubmit();
     }
 

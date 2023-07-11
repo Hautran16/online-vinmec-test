@@ -9,14 +9,13 @@ public class FamilyProfilePage extends Page {
         super(dr);
         this.driverWeb = dr;
     }
-
     By btnAddNewRelatives = By.xpath("//div[@class = 'col-sm-7']//div[5]");
-    By textName = By.xpath("//span[text() = '" + RelativeModel.name + "']");
+//    By textName = By.xpath("//span[text() = '" + relativeModel.getName() + "']");
     By textAge = By.xpath("");
     By textPhoneNum = By.xpath("//div[@class = 'col-sm-8']//div[@class = 'field field-phone-number'] //span[2]");
     By textRelationship = By.xpath("//div[@class = 'col-sm-8']//div[@class = 'field field-relationship'] //span[2]");
     By blockCustomer = By.xpath("//*[@id = 'main-content-right']//div[@class = 'block-customer-info']");
-    By btnEditRelatives = By.xpath("//span[text() = '" + RelativeModel.name + "'] // ancestor:: div[@class = 'content'] // div[@class = 'col-6'][1]");
+//    By btnEditRelatives = By.xpath("//span[text() = '" + relativeModel.getName() + "'] // ancestor:: div[@class = 'content'] // div[@class = 'col-6'][1]");
 
 
     public AddNewRelativesPopup clickAddNewRelatives() {
@@ -25,7 +24,8 @@ public class FamilyProfilePage extends Page {
         return new AddNewRelativesPopup(driverWeb);
     }
 
-    public String getName(){
+    public String getName(RelativeModel relativeModel){
+        By textName = By.xpath("//span[text() = '" + relativeModel.getName() + "']");
         String name = driverWeb.findElement(textName).getText();
         return name;
     }
@@ -45,7 +45,8 @@ public class FamilyProfilePage extends Page {
         return getArrayListElement(blockCustomer).size();
     }
 
-    public void clickEditRelative(){
+    public void clickEditRelative(RelativeModel relativeModel){
+        By btnEditRelatives = By.xpath("//span[text() = '" + relativeModel.getName() + "'] // ancestor:: div[@class = 'content'] // div[@class = 'col-6'][1]");
         waitElementForVisible(btnEditRelatives);
         driverWeb.findElement(btnEditRelatives).click();
     }

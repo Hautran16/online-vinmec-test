@@ -26,17 +26,18 @@ public class DeleteRelativeTest extends TestCase {
         FamilyProfilePage familyProfilePage = new FamilyProfilePage(testBasic.driver);
         AddNewRelativesPopup addNewRelativesPopup = familyProfilePage.clickAddNewRelatives();
         addNewRelativesPopup.showPopupProfileFamily();
-        addNewRelativesPopup.addNewRelatives();
+        addNewRelativesPopup.addNewRelatives(relativeModel);
     }
 
     @Test()
     public void deleteRelativesSuccessfully(){
+        RelativeModel relativeModel = new RelativeModel("Nguyễn Ánh Hồng Hà Trang","20/12/1994","Nam","0975321456","Con");
         AddNewRelativesPopup addNewRelativesPopup = new AddNewRelativesPopup(testBasic.driver);
         addNewRelativesPopup.hidePopupProfileFamily();
         FamilyProfilePage familyProfilePage= new FamilyProfilePage(testBasic.driver);
         int countBlockCusBeforeDel = familyProfilePage.countBlockCustomer();
         DeleteRelativePopup deleteRelativePopup = new DeleteRelativePopup(testBasic.driver);
-        deleteRelativePopup.deleteRelativesSuccessfully();
+        deleteRelativePopup.deleteRelativesSuccessfully(relativeModel);
         addNewRelativesPopup.hidePopupProfileFamily();
         int countBlockCusAfterDel = familyProfilePage.countBlockCustomer();
         assertEquals(countBlockCusBeforeDel - 1, countBlockCusAfterDel);

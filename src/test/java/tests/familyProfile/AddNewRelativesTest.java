@@ -1,6 +1,8 @@
 package tests.familyProfile;
 
 import model.RelativeModel;
+import org.testng.ITestContext;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.HomePage;
 import pages.familyProfile.AddNewRelativesPopup;
@@ -14,6 +16,8 @@ import java.lang.reflect.Method;
 public class AddNewRelativesTest extends TestCase {
     public String excelFilePath = "src/test/resources/testData/testCases/AddNewRelatives.xlsx";
 
+    private ITestContext testContext;
+
     @BeforeClass
     public void navigateToFamilyProfilePage() {
         HomePage homePage = new HomePage(testBasic.driver);
@@ -21,11 +25,16 @@ public class AddNewRelativesTest extends TestCase {
         homePage.clickFamilyProfile();
     }
 
-    public void addNewRelatives() {
+    @BeforeMethod
+    public void setup(ITestContext context) {
+        testContext = context;
+    }
+
+    public void addNewRelatives(RelativeModel relativeModel) {
         FamilyProfilePage familyProfilePage = new FamilyProfilePage(testBasic.driver);
         AddNewRelativesPopup addNewRelativesPopup = familyProfilePage.clickAddNewRelatives();
         addNewRelativesPopup.showPopupProfileFamily();
-        addNewRelativesPopup.addNewRelatives();
+        addNewRelativesPopup.addNewRelatives(relativeModel);
     }
 
     @DataProvider(name = "addNewRelativesTest")
@@ -47,39 +56,41 @@ public class AddNewRelativesTest extends TestCase {
 
    @Test(groups = "Success", dataProvider = "addNewRelativesTest")
     public void verifyAddNewRelativesSuccessfully(RelativeModel relativeModel){
-        addNewRelatives();
+        testContext.setAttribute("relativeModel", relativeModel);
+        addNewRelatives(relativeModel);
         FamilyProfilePage familyProfilePage = new FamilyProfilePage(testBasic.driver);
-        familyProfilePage.verifyTextPresent(familyProfilePage.getName(), RelativeModel.name);
-        familyProfilePage.verifyTextPresent(familyProfilePage.getPhoneNum(), RelativeModel.phoneNumber);
-        familyProfilePage.verifyTextPresent(familyProfilePage.getRelationship(), RelativeModel.relationship);
+        familyProfilePage.verifyTextPresent(familyProfilePage.getName(relativeModel), relativeModel.getName());
+        familyProfilePage.verifyTextPresent(familyProfilePage.getPhoneNum(), relativeModel.getPhoneNumber());
+        familyProfilePage.verifyTextPresent(familyProfilePage.getRelationship(), relativeModel.getRelationship());
     }
 
     @Test(groups = "Failure", dataProvider = "addNewRelativesTest", priority = 1)
     public void verifyAddNewRelativesFailWhenNameInvalid(RelativeModel relativeModel){
-        addNewRelatives();
+        addNewRelatives(relativeModel);
         AddNewRelativesPopup addNewRelativesPopup = new AddNewRelativesPopup(testBasic.driver);
-        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequireName(), RelativeModel.errMessage);
+        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequireName(), relativeModel.getErrMessage());
     }
 
     @Test(groups = "Failure", dataProvider = "addNewRelativesTest", priority = 1)
     public void verifyAddNewRelativesFailWhenPhoneInvalid(RelativeModel relativeModel){
-        addNewRelatives();
+        addNewRelatives(relativeModel);
         AddNewRelativesPopup addNewRelativesPopup = new AddNewRelativesPopup(testBasic.driver);
-        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequirePhone(), RelativeModel.errMessage);
+        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequirePhone(), relativeModel.getErrMessage());
     }
 
     @Test(groups = "Failure", dataProvider = "addNewRelativesTest", priority = 1)
     public void verifyAddNewRelativesFailWhenGenderInvalid(RelativeModel relativeModel){
-        addNewRelatives();
+        addNewRelatives(relativeModel);
         AddNewRelativesPopup addNewRelativesPopup = new AddNewRelativesPopup(testBasic.driver);
-        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequirePhone(), RelativeModel.errMessage);
+        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequirePhone(), relativeModel.getErrMessage());
     }
 
     @AfterMethod(onlyForGroups = "Success", groups = "DeleteData")
-    public void deleteRelativesSuccessfully(){
+    public void deleteRelativesSuccessfully(ITestResult result){
+        RelativeModel relativeModel = (RelativeModel) testContext.getAttribute("relativeModel");
         FamilyProfilePage familyProfilePage = new FamilyProfilePage(testBasic.driver);
         DeleteRelativePopup deleteRelativePopup = new DeleteRelativePopup(testBasic.driver);
-        deleteRelativePopup.deleteRelativesSuccessfully();
+        deleteRelativePopup.deleteRelativesSuccessfully(relativeModel);
         familyProfilePage.waitLoadingHidden();
     }
 
