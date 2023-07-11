@@ -49,30 +49,30 @@ public class AddNewRelativesTest extends TestCase {
     public void verifyAddNewRelativesSuccessfully(RelativeModel relativeModel){
         addNewRelatives();
         FamilyProfilePage familyProfilePage = new FamilyProfilePage(testBasic.driver);
-        familyProfilePage.verifyTextPresent(familyProfilePage.getName(), RelativeModel.modelName);
-        familyProfilePage.verifyTextPresent(familyProfilePage.getPhoneNum(), RelativeModel.modelPhoneNumber);
-        familyProfilePage.verifyTextPresent(familyProfilePage.getRelationship(), RelativeModel.modelRelationship);
+        familyProfilePage.verifyTextPresent(familyProfilePage.getName(), RelativeModel.name);
+        familyProfilePage.verifyTextPresent(familyProfilePage.getPhoneNum(), RelativeModel.phoneNumber);
+        familyProfilePage.verifyTextPresent(familyProfilePage.getRelationship(), RelativeModel.relationship);
     }
 
     @Test(groups = "Failure", dataProvider = "addNewRelativesTest", priority = 1)
     public void verifyAddNewRelativesFailWhenNameInvalid(RelativeModel relativeModel){
         addNewRelatives();
         AddNewRelativesPopup addNewRelativesPopup = new AddNewRelativesPopup(testBasic.driver);
-        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequireName(), RelativeModel.modelErrMessage);
+        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequireName(), RelativeModel.errMessage);
     }
 
     @Test(groups = "Failure", dataProvider = "addNewRelativesTest", priority = 1)
     public void verifyAddNewRelativesFailWhenPhoneInvalid(RelativeModel relativeModel){
         addNewRelatives();
         AddNewRelativesPopup addNewRelativesPopup = new AddNewRelativesPopup(testBasic.driver);
-        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequirePhone(), RelativeModel.modelErrMessage);
+        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequirePhone(), RelativeModel.errMessage);
     }
 
     @Test(groups = "Failure", dataProvider = "addNewRelativesTest", priority = 1)
     public void verifyAddNewRelativesFailWhenGenderInvalid(RelativeModel relativeModel){
         addNewRelatives();
         AddNewRelativesPopup addNewRelativesPopup = new AddNewRelativesPopup(testBasic.driver);
-        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequirePhone(), RelativeModel.modelErrMessage);
+        addNewRelativesPopup.verifyTextPresent(addNewRelativesPopup.getErrRequirePhone(), RelativeModel.errMessage);
     }
 
     @AfterMethod(onlyForGroups = "Success", groups = "DeleteData")

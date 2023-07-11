@@ -1,5 +1,6 @@
 package pages.familyProfile;
 
+import model.RelativeModel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.Page;
@@ -10,9 +11,10 @@ public class DeleteRelativePopup extends Page {
         this.driverWeb = dr;
     }
 
-    By btnDeleteRelatives = By.xpath("//div[@class = 'field field-link-combine']//div[@class = 'row']//div[2]");
+    By btnDeleteRelatives = By.xpath("//span[text() = '" + RelativeModel.name + "'] // ancestor:: div[@class = 'content'] // div[@class = 'col-6'][2]");
     By btnSubmitDeleteRelatives = By.xpath("//div[@class = 'form-actions']//input[contains(@id, 'edit-submit')]");
     By btnCancelDeleteRelatives = By.xpath("//div[@class = 'form-actions']//input[contains(@id, 'edit-cancel')]");
+
 
     public void deleteRelativesSuccessfully(){
         waitElementForVisible(btnDeleteRelatives);

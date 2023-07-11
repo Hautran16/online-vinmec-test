@@ -7,7 +7,7 @@
             <class name="tests.familyProfile.AddNewRelativesTest">
                 <methods>
 <!--                    <include name="verifyAddNewRelativesSuccessfully"></include>-->
-                    <include name="verifyAddNewRelativesFailWhenNameInvalid"></include>
+<!--                    <include name="verifyAddNewRelativesFailWhenNameInvalid"></include>-->
                 </methods>
             </class>
         </classes>

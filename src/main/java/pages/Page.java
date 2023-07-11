@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -81,6 +83,15 @@ public class Page {
 				ExpectedConditions.presenceOfElementLocated(By.id("load")),
 				ExpectedConditions.attributeToBe(By.id("load"), "style", "visibility: hidden;")
 		));
+	}
+
+	public ArrayList<WebElement> getArrayListElement(By elementLocator){
+		List<WebElement> elementList = driverWeb.findElements(elementLocator);
+		ArrayList<WebElement> elementArrayList = new ArrayList<>();
+		for (int i = 0; i < elementList.size(); i++){
+			elementArrayList.add(elementList.get(i));
+		}
+		return elementArrayList;
 	}
 
 }

@@ -45,11 +45,11 @@ public class AddNewRelativesPopup extends Page {
 
     public void inputName(){
         waitElementForVisible(txtName);
-        driverWeb.findElement(txtName).sendKeys(RelativeModel.modelName);
+        driverWeb.findElement(txtName).sendKeys(RelativeModel.name);
     }
 
     public void inputBirthday(){
-        String birthday = RelativeModel.modelBirthday;
+        String birthday = RelativeModel.birthday;
         waitElementForVisible(dateBirthDay);
         driverWeb.findElement(dateBirthDay).click();
         Date dateBirthdayInput = null;
@@ -78,7 +78,7 @@ public class AddNewRelativesPopup extends Page {
     }
 
     public void inputGender(){
-        String gender = RelativeModel.modelGender;
+        String gender = RelativeModel.gender;
         waitElementForVisible(ddGender);
         driverWeb.findElement(ddGender).click();
         String elementLocator = "//*[contains(@id, 'edit-gender')]//option[@value = '']";
@@ -96,11 +96,11 @@ public class AddNewRelativesPopup extends Page {
 
     public void inputPhoneNumber(){
         waitElementForVisible(txtPhoneNumber);
-        driverWeb.findElement(txtPhoneNumber).sendKeys(RelativeModel.modelPhoneNumber);
+        driverWeb.findElement(txtPhoneNumber).sendKeys(RelativeModel.phoneNumber);
     }
 
     public void inputRelationship(){
-        String relationship = RelativeModel.modelRelationship;
+        String relationship = RelativeModel.relationship;
         Map<String, String> map = new HashMap<String, String>();
         map.put("Bố", "Father");
         map.put("Mẹ", "Mother");
@@ -159,6 +159,11 @@ public class AddNewRelativesPopup extends Page {
     public void clickClose(){
         waitElementForVisible(btnClose);
         driverWeb.findElement(btnClose).click();
+    }
+
+    public void clearInput(){
+        driverWeb.findElement(txtName).clear();
+        driverWeb.findElement(txtPhoneNumber).clear();
     }
 
 }

@@ -1,5 +1,5 @@
 package pages.familyProfile;
-
+import model.RelativeModel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.Page;
@@ -11,10 +11,12 @@ public class FamilyProfilePage extends Page {
     }
 
     By btnAddNewRelatives = By.xpath("//div[@class = 'col-sm-7']//div[5]");
-    By textName = By.xpath("//div[@class = 'col-sm-8']//div[@class = 'field field-name'] //span[1]");
+    By textName = By.xpath("//span[text() = '" + RelativeModel.name + "']");
     By textAge = By.xpath("");
     By textPhoneNum = By.xpath("//div[@class = 'col-sm-8']//div[@class = 'field field-phone-number'] //span[2]");
     By textRelationship = By.xpath("//div[@class = 'col-sm-8']//div[@class = 'field field-relationship'] //span[2]");
+    By blockCustomer = By.xpath("//*[@id = 'main-content-right']//div[@class = 'block-customer-info']");
+    By btnEditRelatives = By.xpath("//span[text() = '" + RelativeModel.name + "'] // ancestor:: div[@class = 'content'] // div[@class = 'col-6'][1]");
 
 
     public AddNewRelativesPopup clickAddNewRelatives() {
@@ -37,6 +39,15 @@ public class FamilyProfilePage extends Page {
     public String getRelationship(){
         String relationship = driverWeb.findElement(textRelationship).getText();
         return relationship;
+    }
+
+    public int countBlockCustomer(){
+        return getArrayListElement(blockCustomer).size();
+    }
+
+    public void clickEditRelative(){
+        waitElementForVisible(btnEditRelatives);
+        driverWeb.findElement(btnEditRelatives).click();
     }
 
 }
