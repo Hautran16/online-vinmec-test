@@ -18,6 +18,7 @@ public class EditRelativeTest extends TestCase {
 
     public String excelFilePath = "src/test/resources/testData/testCases/AddNewRelatives.xlsx";
     private ITestContext testContext;
+
     @DataProvider(name = "EditRelatives")
     public Object[][] getTestData(Method method) throws IOException {
         Object[][] relativeModelList = null;
@@ -31,14 +32,6 @@ public class EditRelativeTest extends TestCase {
             case ("verifyEditRelativesFailWhenGenderInvalid"): relativeModelList = testBasic.getDataFromExcelObject(excelFilePath, "Failure_Gender", RelativeModel.class);
                 break;
         }
-
-        for (Object[] data : relativeModelList) {
-            for (Object item : data) {
-                System.out.println("DataProvider");
-                System.out.println(item.toString());
-            }
-        }
-
         return relativeModelList;
     }
 
@@ -57,7 +50,6 @@ public class EditRelativeTest extends TestCase {
 
     @BeforeClass
     public void navigateToFamilyProfilePage() {
-        System.out.println("BeforeClass");
         HomePage homePage = new HomePage(testBasic.driver);
         homePage.clickIconProfile();
         homePage.clickFamilyProfile();
@@ -65,16 +57,14 @@ public class EditRelativeTest extends TestCase {
 
     @BeforeMethod
     public void showPopupEdit(ITestContext context){
-        System.out.println("BeforeMethod");
         testContext = context;
+        System.out.println("BeforeMethod         " + context);
         addNewRelatives();
     }
 
     @Test(groups = "Success", dataProvider = "EditRelatives")
     public void verifyEditRelativesSuccessfully(RelativeModel relativeModel){
         testContext.setAttribute("relativeModel", relativeModel);
-//        System.out.println(relativeModel.name);
-//        new RelativeModel("Nguyễn Ánh Hồng Hà Trang3","20/12/1995","Nam","0975321457","Con");
         RelativeModel oldRelativeModel = new RelativeModel("Nguyễn Ánh Hồng Hà Trang2","20/12/1994","Nam","0975321456","Con");
         AddNewRelativesPopup addNewRelativesPopup = new AddNewRelativesPopup(testBasic.driver);
         addNewRelativesPopup.hidePopupProfileFamily();
@@ -82,8 +72,6 @@ public class EditRelativeTest extends TestCase {
         familyProfilePage.clickEditRelative(oldRelativeModel);
         addNewRelativesPopup.clearInput();
         addNewRelativesPopup.addNewRelatives(relativeModel);
-//        editNewRelatives();
-//        FamilyProfilePage familyProfilePage= new FamilyProfilePage(testBasic.driver);
         familyProfilePage.verifyTextPresent(familyProfilePage.getName(relativeModel), relativeModel.getName());
         familyProfilePage.verifyTextPresent(familyProfilePage.getPhoneNum(), relativeModel.getPhoneNumber());
         familyProfilePage.verifyTextPresent(familyProfilePage.getRelationship(), relativeModel.getRelationship());
